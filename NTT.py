@@ -36,12 +36,8 @@ def findinv(alpha, M):
 
 def bit_reverse(x, n):
 	if type(x) == int:
-		bx = bin(x)[2:]
-		r = 0
-		for i in range(n-1, -1, -1):
-			if i < len(bx) and int(bx[len(bx) - i - 1]) == 1:
-				r += (2 ** (n - i - 1))
-		return r
+		b = '{:0{width}b}'.format(x, width=n)
+		return int(b[::-1], 2)
 	else:
 		x_out = np.zeros(len(x), dtype = int)
 		for i in range(len(x)):
